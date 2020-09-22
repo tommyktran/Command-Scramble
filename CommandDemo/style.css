@@ -1,0 +1,50 @@
+.button {
+    width: 100px;
+    margin: 10px;
+}
+#a-button {
+    content: url("images/blue-A.png");
+}
+#a-button:active {
+    content: url("images/blue-A-pushed.png");
+}
+
+#b-button {
+    content: url("images/green-B.png");
+}
+#b-button:active {
+    content: url("images/green-B-pushed.png");
+}
+
+#c-button {
+    content: url("images/red-C.png");
+}
+#c-button:active {
+    content: url("images/red-C-pushed.png");
+}
+
+#d-button {
+    content: url("images/yellow-D.png");
+}
+#d-button:active {
+    content: url("images/yellow-D-pushed.png");
+}
+
+#enter-button {
+    content: url("images/silver-!arrowright.png")
+}
+#enter-button:active {
+    content: url("images/silver-!arrowright-pushed.png")
+}
+
+#clear-button {
+    content: url("images/silver-!blank.png")
+}
+#clear-button:active {
+    content: url("images/silver-blank-pushed.png")
+}
+
+/* Media queries */
+@media (min-width: 800px) {
+    
+}
