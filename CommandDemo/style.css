@@ -31,17 +31,17 @@
 }
 
 #enter-button {
-    content: url("images/silver-!arrowright.png")
+    content: url("images/silver-!arrowright.png");
 }
 #enter-button:active {
-    content: url("images/silver-!arrowright-pushed.png")
+    content: url("images/silver-!arrowright-pushed.png");
 }
 
 #clear-button {
-    content: url("images/silver-!blank.png")
+    content: url("images/silver-!blank.png");
 }
 #clear-button:active {
-    content: url("images/silver-blank-pushed.png")
+    content: url("images/silver-blank-pushed.png");
 }
 
 /* Media queries */
