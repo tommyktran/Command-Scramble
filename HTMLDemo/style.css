@@ -3,26 +3,82 @@
     src: url('november/novem___.ttf');
 }
 
+html, body {
+    height: 100%;
+}
 body {
     background-image: url("images/back.png");
+    font-size: 18px;
+    font-family: november;
+    color: white;
+    letter-spacing: .11em;
+}
+header {
+    display: flex;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-color: rgb(0,0,0,60%);
+}
+.website-title {
+    font-size: 1.8em;
 }
 
 img {
     user-select: none;
 }
 
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.log-input-container {
+    background-color: rgb(0,0,0,60%);
+    padding: 5px 0 5px 9px;
+    position: relative;
+    
+}
+.command-log {
+    height: 4.5em;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.command-log p {
+    margin: 3px;
+}
+.command-input {
+    padding-bottom: 0px;
+    padding: 10px 0 5px 0;
+    margin: 4px;
+    border-top: 1px solid rgb(255,255,255,30%);
+}
+
+.game-area {
+    height: 100%;
+}
+
+.button-container, .log-input-container {
+    justify-self: flex-end;
+}
 .button-container {
     display: flex;
     flex-wrap: wrap;
-    flex: 1;
     justify-content: space-around;
+    width: 100%;
 
     background-color: rgb(0,0,0,40%);
+    margin: 0 auto;
+    padding: 5px;
 }
 .main-buttons-container {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
+    width: 220px;
 }
 .other-buttons-container {
     display: flex;
@@ -32,8 +88,8 @@ img {
 BUTTON IMAGES
 ---------------- */
 .button {
-    width: 70px;
-    margin: 10px;
+    width: 100px;
+    margin: 5px;
 }
 #a-button {
     content: url("images/blue-A.png");
@@ -76,7 +132,27 @@ BUTTON IMAGES
 #clear-button:active {
     content: url("images/silver-blank-pushed.png");
 }
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+* {
+    box-sizing: border-box;
+}
 /* Media queries */
-@media (min-width: 800px) {
-    
+@media (max-width: 345px) {
+    .button-container {
+        padding: 0;
+    }
+}
+
+@media (min-width: 490px) {
+    .main-buttons-container {
+        margin-left: 20px;
+    }
+    .other-buttons-container {
+        margin-right: 20px;
+    }
 }
