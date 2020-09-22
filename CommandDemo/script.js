@@ -1,5 +1,7 @@
 displayElement = document.getElementById("input-display");
 
+
+
 // var sounds;
 
 var input = {
@@ -75,11 +77,82 @@ var command = {
 command.commandList = [command.attackCommand];
 
 document.getElementById("a-button").addEventListener("click", input.pressA);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyA') {
+        document.getElementById("a-button").style.content='url("images/blue-A-pushed.png")';
+        input.pressA();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'KeyA') {
+        document.getElementById("a-button").style.content='url("images/blue-A.png")';
+    }
+});
+
 document.getElementById("b-button").addEventListener("click", input.pressB);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyS') {
+        document.getElementById("b-button").style.content='url("images/green-B-pushed.png")';
+        input.pressB();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'KeyS') {
+        document.getElementById("b-button").style.content='url("images/green-B.png")';
+    }
+});
+
 document.getElementById("c-button").addEventListener("click", input.pressC);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyZ') {
+        document.getElementById("c-button").style.content='url("images/red-C-pushed.png")';
+        input.pressC();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'KeyZ') {
+        document.getElementById("c-button").style.content='url("images/red-C.png")';
+    }
+});
+
 document.getElementById("d-button").addEventListener("click", input.pressD);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyX') {
+        document.getElementById("d-button").style.content='url("images/yellow-D-pushed.png")';
+        input.pressD();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'KeyX') {
+        document.getElementById("d-button").style.content='url("images/yellow-D.png")';
+    }
+});
+
 document.getElementById("enter-button").addEventListener("click", input.pressEnter);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'Enter' || e.code == 'Space') {
+        document.getElementById("enter-button").style.content='url("images/silver-!arrowright-pushed.png")';
+        input.pressEnter();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'Enter' || e.code == 'Space') {
+        document.getElementById("enter-button").style.content='url("images/silver-!arrowright.png")';
+    }
+});
+
 document.getElementById("clear-button").addEventListener("click", input.pressClear);
+window.addEventListener("keydown", function(e){
+    if (e.code == 'Backspace') {
+        document.getElementById("clear-button").style.content='url("images/silver-blank-pushed.png")';
+        input.pressClear();
+    }
+});
+window.addEventListener("keyup", function(e){
+    if (e.code == 'Backspace') {
+        document.getElementById("clear-button").style.content='url("images/silver-!blank.png")';
+    }
+});
 
 function randomLetterExcept(letter) {
     let letterArray = []
