@@ -7,7 +7,6 @@ html, body {
     height: 100%;
 }
 body {
-    background-image: url("images/back.png");
     font-size: 18px;
     font-family: november;
     color: white;
@@ -30,6 +29,7 @@ img {
 }
 
 .wrapper {
+    background-image: url("images/back.png");
     height: 100%;
     width: 100%;
     display: flex;
@@ -95,42 +95,42 @@ BUTTON IMAGES
     content: url("images/blue-A.png");
 }
 #a-button:active {
-    content: url("images/blue-A-pushed.png");
+    content: url("images/blue-A-pushed.png") !important;
 }
 
 #b-button {
     content: url("images/green-B.png");
 }
 #b-button:active {
-    content: url("images/green-B-pushed.png");
+    content: url("images/green-B-pushed.png") !important;
 }
 
 #c-button {
     content: url("images/red-C.png");
 }
 #c-button:active {
-    content: url("images/red-C-pushed.png");
+    content: url("images/red-C-pushed.png") !important;
 }
 
 #d-button {
     content: url("images/yellow-D.png");
 }
 #d-button:active {
-    content: url("images/yellow-D-pushed.png");
+    content: url("images/yellow-D-pushed.png") !important;
 }
 
 #enter-button {
     content: url("images/silver-!arrowright.png");
 }
 #enter-button:active {
-    content: url("images/silver-!arrowright-pushed.png");
+    content: url("images/silver-!arrowright-pushed.png") !important;
 }
 
 #clear-button {
     content: url("images/silver-!blank.png");
 }
 #clear-button:active {
-    content: url("images/silver-blank-pushed.png");
+    content: url("images/silver-blank-pushed.png") !important;
 }
 
 .clearfix::after {
@@ -143,8 +143,14 @@ BUTTON IMAGES
 }
 /* Media queries */
 @media (max-width: 345px) {
+    .button {
+        width: 70px;
+    }
     .button-container {
         padding: 0;
+    }
+    .main-buttons-container {
+        width: 200px;
     }
 }
 

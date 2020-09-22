@@ -1,6 +1,7 @@
 displayElement = document.getElementById("input-display");
-
-
+var buttonSound = document.getElementById("sound");
+document.getElementById("backgroundMusic").loop = true;
+document.getElementById("backgroundMusic").play();
 
 // var sounds;
 
@@ -9,27 +10,33 @@ var input = {
     pressA: function() {
         input.currentInput.push("A");
         input.updateDisplay();
+        buttonSound.play();
     },
     pressB: function() {
         input.currentInput.push("B");
         input.updateDisplay();
+        buttonSound.play();
     },
     pressC: function() {
         input.currentInput.push("C");
         input.updateDisplay();
+        buttonSound.play();
     },
     pressD: function() {
         input.currentInput.push("D");
         input.updateDisplay();
+        buttonSound.play();
     },
     pressEnter: function() {
         command.processInput(input.currentInput);
         input.currentInput = [];
         input.updateDisplay();
+        buttonSound.play();
     },
     pressClear: function() {
         input.currentInput = [];
         input.updateDisplay();
+        buttonSound.play();
     },
     updateDisplay: function() {
         displayElement.innerHTML = input.currentInput.join("");
