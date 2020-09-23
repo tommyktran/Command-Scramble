@@ -1,42 +1,51 @@
 displayElement = document.getElementById("input-display");
-var buttonSound = document.getElementById("sound");
-document.getElementById("backgroundMusic").loop = true;
-document.getElementById("backgroundMusic").play();
+// var buttonSound = document.getElementById("sound");
+// document.getElementById("backgroundMusic").loop = true;
+// document.getElementById("backgroundMusic").play();
 
 // var sounds;
 
 var input = {
     currentInput: [],
+    pressButton: function(button) {
+        if (button == "A") {
+            this.pressA();
+        } else if (button == "B") {
+            this.pressB();
+        } else if (button == "C") {
+            this.pressC();
+        } else if (button == "D") {
+            this.pressD();
+        } else if (button == "Enter") {
+            this.pressEnter();
+        } else if (button == "Clear") {
+            this.pressClear();
+        }
+    },
     pressA: function() {
         input.currentInput.push("A");
         input.updateDisplay();
-        buttonSound.play();
     },
     pressB: function() {
         input.currentInput.push("B");
         input.updateDisplay();
-        buttonSound.play();
     },
     pressC: function() {
         input.currentInput.push("C");
         input.updateDisplay();
-        buttonSound.play();
     },
     pressD: function() {
         input.currentInput.push("D");
         input.updateDisplay();
-        buttonSound.play();
     },
     pressEnter: function() {
         command.processInput(input.currentInput);
         input.currentInput = [];
         input.updateDisplay();
-        buttonSound.play();
     },
     pressClear: function() {
         input.currentInput = [];
         input.updateDisplay();
-        buttonSound.play();
     },
     updateDisplay: function() {
         displayElement.innerHTML = input.currentInput.join("");
@@ -65,7 +74,7 @@ var command = {
         while (commandCurrentlyExists) {
             for (x in commandArray) {
                 commandArray[x] = randomLetterExcept(commandArray[x]);
-                if (commandExists(commandArray)) {
+                if (!(commandExists(commandArray))) {
                     commandCurrentlyExists = false;
                 }
             }
@@ -80,14 +89,27 @@ var command = {
 
 }
 
+function commandExists(commandArray) {
+    let oldCommand = commandArray;
+    // Checks if a command's notation is already taken.
+    // Also checks to make sure that it is not the same command as before.
+    for (x in command.commandList) {
+        if (commandArray == command.commandList[x] && commandArray != oldCommand) {
+            return true;
+        } else {
+        return false;
+        }
+    } 
+}
+
 // We define commandList outside the command object because it won't work otherwise.
 command.commandList = [command.attackCommand];
 
-document.getElementById("a-button").addEventListener("click", input.pressA);
+document.getElementById("a-button").addEventListener("click", input.pressButton("A"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyA') {
         document.getElementById("a-button").style.content='url("images/blue-A-pushed.png")';
-        input.pressA();
+        input.pressButton("A");
     }
 });
 window.addEventListener("keyup", function(e){
@@ -96,7 +118,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("b-button").addEventListener("click", input.pressB);
+document.getElementById("b-button").addEventListener("click", input.pressButton("B"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyS') {
         document.getElementById("b-button").style.content='url("images/green-B-pushed.png")';
@@ -109,11 +131,11 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("c-button").addEventListener("click", input.pressC);
+document.getElementById("c-button").addEventListener("click", input.pressButton("C"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyZ') {
         document.getElementById("c-button").style.content='url("images/red-C-pushed.png")';
-        input.pressC();
+        input.pressButton("C");
     }
 });
 window.addEventListener("keyup", function(e){
@@ -122,11 +144,11 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("d-button").addEventListener("click", input.pressD);
+document.getElementById("d-button").addEventListener("click", input.pressButton("D"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyX') {
         document.getElementById("d-button").style.content='url("images/yellow-D-pushed.png")';
-        input.pressD();
+        input.pressButton("D");
     }
 });
 window.addEventListener("keyup", function(e){
@@ -135,11 +157,11 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("enter-button").addEventListener("click", input.pressEnter);
+document.getElementById("enter-button").addEventListener("click", input.pressButton("Enter"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'Enter' || e.code == 'Space') {
         document.getElementById("enter-button").style.content='url("images/silver-!arrowright-pushed.png")';
-        input.pressEnter();
+        input.pressButton("Enter");
     }
 });
 window.addEventListener("keyup", function(e){
@@ -148,11 +170,11 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("clear-button").addEventListener("click", input.pressClear);
+document.getElementById("clear-button").addEventListener("click", input.pressButton("Clear"));
 window.addEventListener("keydown", function(e){
     if (e.code == 'Backspace') {
         document.getElementById("clear-button").style.content='url("images/silver-blank-pushed.png")';
-        input.pressClear();
+        input.pressButton("Clear");
     }
 });
 window.addEventListener("keyup", function(e){
@@ -178,18 +200,7 @@ function randomLetterExcept(letter) {
     return letterArray[Math.floor(Math.random() * 3)];
 }
 
-function commandExists(commandArray) {
-    let oldCommand = commandArray;
-    // Checks if a command's notation is already taken.
-    // Also checks to make sure that it is not the same command as before.
-    for (x in command.commandList) {
-        if (commandArray == command.commandList[x] && commandArray != oldCommand) {
-            return true;
-        } else {
-        return false;
-        }
-    } 
-}
+
 
 //This function checks if two arrays are equal, because you can't compare them with ==.
 function arraysEqual(a, b) {
