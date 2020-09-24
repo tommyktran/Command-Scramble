@@ -2,6 +2,11 @@
     font-family: november;
     src: url('november/novem___.ttf');
 }
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
 html, body {
     height: 100%;
@@ -84,6 +89,37 @@ img {
     display: flex;
     flex-direction: column-reverse;
 }
+
+.game-area {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    position: relative;
+    padding: 0 10px;
+}
+
+.enemy1, .enemy2, .enemy3 {
+    display: flex;
+    justify-content:center;
+}
+
+.enemy-basic {
+	background: url('images/Sprite Sheets/SpaceshipMegapack_LightBlue.png') no-repeat -452px -398px;
+	width: 56px;
+    height: 37px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* left: -25px; Have negative left equal to half of width */
+}
+.enemy-basic:after {
+    content: "Enemy";
+    letter-spacing: 0em;
+    position: absolute;
+    margin-top: 35px;
+}
 /* ---------------
 BUTTON IMAGES
 ---------------- */
@@ -133,11 +169,7 @@ BUTTON IMAGES
     content: url("images/silver-blank-pushed.png") !important;
 }
 
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+
 * {
     box-sizing: border-box;
 }
