@@ -5,7 +5,12 @@ displayElement = document.getElementById("input-display");
 
 // var sounds;
 
+enemy1Element = document.getElementById("enemy1");
+enemy2Element = document.getElementById("enemy2");
+enemy3Element = document.getElementById("enemy3");
+
 var input = {
+    currentTarget: "",
     currentInput: [],
     pressButton: function(button) {
         if (button == "A") {
@@ -49,6 +54,28 @@ var input = {
     },
     updateDisplay: function() {
         displayElement.innerHTML = input.currentInput.join("");
+    },
+    targetEnemy: function(target) {
+        if (target == "1") {
+            input.setTarget("1");
+        }
+        if (target == "2") {
+            input.setTarget("2");
+        }
+        if (target == "3") {
+            input.setTarget("3");
+        }
+    },
+
+    setTarget: function(target) {
+        oldTarget = input.currentTarget;
+        document.getElementById("target"+target).classList.toggle("notTargeted");
+        if (input.currentTarget != target) {
+            input.currentTarget = target;
+            document.getElementById("target"+oldTarget).classList.toggle("notTargeted");
+        } else {
+            input.currentTarget = "";
+        }
     }
 }
 
@@ -199,6 +226,11 @@ window.addEventListener("keyup", function(e){
         document.getElementById("clear-button").style.content='url("images/silver-!blank.png")';
     }
 });
+
+document.getElementById("enemy1").addEventListener("click", function(){input.targetEnemy("1")});
+document.getElementById("enemy2").addEventListener("click", function(){input.targetEnemy("2")});
+document.getElementById("enemy3").addEventListener("click", function(){input.targetEnemy("3")});
+
 
 function randomLetterExcept(letter) {
     let letterArray = []

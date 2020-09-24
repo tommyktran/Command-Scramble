@@ -43,7 +43,7 @@ img {
 
 .log-input-container {
     background-color: rgb(0,0,0,60%);
-    padding: 5px 0 5px 9px;
+    padding: 5px 9px;
     position: relative;
     
 }
@@ -95,14 +95,22 @@ img {
     align-items: center;
     flex: 1;
     justify-content: space-between;
-    margin-bottom: 50px;
     position: relative;
-    padding: 0 10px;
+    padding: 0 10%;
 }
 
 .enemy1, .enemy2, .enemy3 {
     display: flex;
-    justify-content:center;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+}
+#target1, #target2, #target3 {
+    position: absolute;
+}
+.notTargeted {
+    visibility: hidden;
 }
 
 .enemy-basic {
@@ -112,13 +120,12 @@ img {
     position: relative;
     display: flex;
     justify-content: center;
-    /* left: -25px; Have negative left equal to half of width */
 }
 .enemy-basic:after {
     content: "Enemy";
     letter-spacing: 0em;
     position: absolute;
-    margin-top: 35px;
+    margin-top: 50px;
 }
 /* ---------------
 BUTTON IMAGES
@@ -192,5 +199,8 @@ BUTTON IMAGES
     }
     .other-buttons-container {
         margin-right: 20px;
+    }
+    .wrapper {
+        width: 490px;
     }
 }
