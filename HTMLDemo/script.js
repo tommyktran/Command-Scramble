@@ -61,12 +61,15 @@ var command = {
                 // Make if statements for all the commands here.
                 if (command.commandList[x] == command.attackCommand) {
                     command.attack();
+                } 
+            } else {
+                    command.logInvalid();
                 }
-            }
         }
     },
     attack: function() {
         console.log("attack");
+        command.log("ATTACK: destroyed enemy.")
     },
 
     randomizeCommand: function(commandArray) {
@@ -85,6 +88,20 @@ var command = {
         for (x in command.commandList) {
             this.randomizeCommand(this.commandList[x]);
         }
+    },
+    log: function(text) {
+        let logElement = document.getElementById("command-log");
+        let log1Element = document.getElementById("log1");
+        let log2Element = document.getElementById("log2");
+        let log3Element = document.getElementById("log3");
+
+        log3Element.innerHTML = log2Element.innerHTML;
+        log2Element.innerHTML = log1Element.innerHTML;
+        log1Element.innerHTML = text;
+    },
+
+    logInvalid: function() {
+        command.log("Invalid command.");
     }
 
 }
@@ -105,7 +122,7 @@ function commandExists(commandArray) {
 // We define commandList outside the command object because it won't work otherwise.
 command.commandList = [command.attackCommand];
 
-document.getElementById("a-button").addEventListener("click", input.pressButton("A"));
+document.getElementById("a-button").addEventListener("click", function(){input.pressButton("A")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyA') {
         document.getElementById("a-button").style.content='url("images/blue-A-pushed.png")';
@@ -118,7 +135,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("b-button").addEventListener("click", input.pressButton("B"));
+document.getElementById("b-button").addEventListener("click", function(){input.pressButton("B")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyS') {
         document.getElementById("b-button").style.content='url("images/green-B-pushed.png")';
@@ -131,7 +148,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("c-button").addEventListener("click", input.pressButton("C"));
+document.getElementById("c-button").addEventListener("click", function(){input.pressButton("C")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyZ') {
         document.getElementById("c-button").style.content='url("images/red-C-pushed.png")';
@@ -144,7 +161,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("d-button").addEventListener("click", input.pressButton("D"));
+document.getElementById("d-button").addEventListener("click", function(){input.pressButton("D")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyX') {
         document.getElementById("d-button").style.content='url("images/yellow-D-pushed.png")';
@@ -157,7 +174,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("enter-button").addEventListener("click", input.pressButton("Enter"));
+document.getElementById("enter-button").addEventListener("click", function(){input.pressButton("Enter")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'Enter' || e.code == 'Space') {
         document.getElementById("enter-button").style.content='url("images/silver-!arrowright-pushed.png")';
@@ -170,7 +187,7 @@ window.addEventListener("keyup", function(e){
     }
 });
 
-document.getElementById("clear-button").addEventListener("click", input.pressButton("Clear"));
+document.getElementById("clear-button").addEventListener("click", function(){input.pressButton("Clear")});
 window.addEventListener("keydown", function(e){
     if (e.code == 'Backspace') {
         document.getElementById("clear-button").style.content='url("images/silver-blank-pushed.png")';
