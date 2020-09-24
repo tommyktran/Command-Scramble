@@ -9,13 +9,14 @@ var game = {
         game.isRunning = true;
         game.resetGameVars();
         window.setTimeout(instance, 100);
+        window.setTimeout(enemy.start(), 100);
         // while (game.isRunning) {
         //     game.process();
         // }
     },
     gameOver: function() {
         game.isRunning = false;
-        
+
     },
     resetGameVars: function() {
         playerShield = 100;
@@ -25,15 +26,18 @@ var game = {
         elapsed = '0.0';
         start = new Date().getTime()
     },
-    process: function() {
-
-    },
-
     changePlayerShield: function(amount) {
         game.playerShield += amount;
         if (playerShield <= 0) {
             isRunning = false;
         }
+    }
+}
+
+var enemy = {
+
+    start: function() {
+        
     }
 }
 
@@ -53,7 +57,8 @@ function instance()
     game.timeSurvived = elapsed;
 
     var diff = (new Date().getTime() - start) - time;  
-    } 
+     
     window.setTimeout(instance, (100 - diff));
+    }
 }
 
