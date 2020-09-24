@@ -68,11 +68,16 @@ var input = {
     },
 
     setTarget: function(target) {
-        oldTarget = input.currentTarget;
+        let oldTarget = "";
+        if (input.currentTarget != "") {
+            oldTarget = input.currentTarget;
+        }
         document.getElementById("target"+target).classList.toggle("notTargeted");
         if (input.currentTarget != target) {
             input.currentTarget = target;
-            document.getElementById("target"+oldTarget).classList.toggle("notTargeted");
+            if (oldTarget != "") {
+                document.getElementById("target"+oldTarget).classList.toggle("notTargeted");  
+            }
         } else {
             input.currentTarget = "";
         }
