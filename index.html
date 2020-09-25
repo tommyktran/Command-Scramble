@@ -5,14 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
-    <title></title>
+    <title>Command Scramble</title>
+
+    <link rel="shortcut icon" href="#">
+
 </head>
 <body>
-    <header>
-        
-    </header>
     <div class="wrapper">
+        <header>
+            <h1 class="website-title">Command Scramble</h1>
+            <img class="hamburger" src="images/icons8-menu-24.png" width="24px" height="24px">
+        </header>
+
+        <div class="game-area">
+            <div class="enemy1 clearfix enemy" id="enemy1">
+                <div class="enemy-basic flyIn" id="enemy1-div"></div>
+                <img id="target1" class="notTargeted" src="images/crosshair012.png">
+            </div>
+            <div class="enemy2 clearfix enemy" id="enemy2">
+                <div class="enemy-basic flyIn" id="enemy2-div"></div>
+                <img id="target2" class="notTargeted" src="images/crosshair012.png">
+            </div>
+            <div class="enemy3 clearfix enemy" id="enemy3">
+                <div class="enemy-basic flyIn" id="enemy3-div"></div>
+                <img id="target3" class="notTargeted" src="images/crosshair012.png">
+            </div>
+        </div>
+
+        <div class="log-input-container">
+            <div class="command-log clearfix" id="command-log">
+                <p id="log1"></p>
+                <p id="log2"></p>
+                <p id="log3"></p>
+            </div>
+            <p class="command-input">Current Input: <span id="input-display"> </span></p>
+        </div>
         
+        <div class="button-container">
+            <div class="main-buttons-container">
+                <img class="button" id="a-button">
+                <img class="button" id="b-button">
+                <img class="button" id="c-button">
+                <img class="button" id="d-button">
+            </div>
+            <div class="other-buttons-container">
+                <img class="button" id="enter-button">
+                <img class="button" id="clear-button">
+            </div>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
