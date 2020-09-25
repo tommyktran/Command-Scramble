@@ -175,13 +175,8 @@ var enemy = {
     spawnEnemy: (enemySlot, enemyType = { name: "enemy-basic", hp: 1, startup: 1, attack: 3 }) => {
             let enemyElement = document.getElementById("enemy"+enemySlot);
             let enemyDivElement = document.getElementById("enemy"+enemySlot+"-div");
-
-            console.log(enemySlot);
             
             enemy.enemyArray[enemySlot-1] = enemyType;
-            
-            console.log(enemy.enemyArray[enemySlot-1]);
-
             enemyDivElement.className = enemyType.name + " flyIn";
 
             // Sets a timeout before the "enemy" class is enabled to prevent players
@@ -200,6 +195,10 @@ var enemy = {
 
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";
+        // This hack puts an explosion gif and adds a random number to the end so it plays every time.
+        enemyDivElement.insertAdjacentHTML('beforebegin', '<img src=images/explosion.gif?a='+Math.random()+' id="explosion" style="position: absolute;">')
+        // Removes the explosion gif
+        setTimeout(function() {document.getElementById("explosion").remove()}, 600);
 
         // When you kill an enemy, it sets a delay to spawn another enemy
         // The delay is random.
