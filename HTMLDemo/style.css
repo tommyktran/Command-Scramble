@@ -116,6 +116,26 @@ img {
 .notTargeted {
     visibility: hidden;
 }
+.flyIn {
+    animation: flyIn .8s cubic-bezier(0.22, 1, 0.36, 1) forwards,
+               fadeIn .8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes flyIn {
+    0% {
+        transform: translate(0, -300px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
 
 .enemy-basic {
 	background: url('images/Sprite Sheets/SpaceshipMegapack_LightBlue.png') no-repeat -452px -398px;

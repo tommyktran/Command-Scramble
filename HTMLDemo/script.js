@@ -182,8 +182,11 @@ var enemy = {
             
             console.log(enemy.enemyArray[enemySlot-1]);
 
-            enemyElement.classList.toggle("enemy");
-            enemyDivElement.className = enemyType.name;
+            enemyDivElement.className = enemyType.name + " flyIn";
+
+            // Sets a timeout before the "enemy" class is enabled to prevent players
+            // from killing enemies as soon as they are spawned.
+            setTimeout(function() {enemyElement.classList.toggle("enemy")}, 800);
     },
         
     killEnemy: function(target) {
@@ -198,7 +201,10 @@ var enemy = {
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";
 
-        setTimeout(function() {enemy.spawnEnemy(target)}, 1000);
+        // When you kill an enemy, it sets a delay to spawn another enemy
+        // The delay is random.
+        let randomDelay = Math.random() * (3500 - 1000) + 1000
+        setTimeout(function() {enemy.spawnEnemy(target)}, randomDelay);
     }
 }
 
