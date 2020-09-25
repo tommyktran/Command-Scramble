@@ -69,18 +69,37 @@ var input = {
 
     setTarget: function(target) {
         let oldTarget = "";
-        if (input.currentTarget != "") {
-            oldTarget = input.currentTarget;
-        }
-        document.getElementById("target"+target).classList.toggle("notTargeted");
-        if (input.currentTarget != target) {
+        if (input.currentTarget == "") {
             input.currentTarget = target;
-            if (oldTarget != "") {
-                document.getElementById("target"+oldTarget).classList.toggle("notTargeted");  
-            }
-        } else {
+            document.getElementById("target"+target).classList.toggle("notTargeted");
+        } else if (input.currentTarget == target) {
             input.currentTarget = "";
+            document.getElementById("target"+target).classList.toggle("notTargeted");
+        } else if (input.currentTarget != target) {
+            oldTarget = input.currentTarget;
+            input.currentTarget = target;
+            document.getElementById("target"+target).classList.toggle("notTargeted");
+            if (oldTarget != "") {
+                document.getElementById("target"+oldTarget).classList.toggle("notTargeted");
+            }
         }
+
+        // if (input.currentTarget != "") {
+        //     oldTarget = input.currentTarget;
+        //     document.getElementById("target"+target).classList.toggle("notTargeted");
+        // }
+        // if (input.currentTarget == target) {
+        //     document.getElementById("target"+target).classList.toggle("notTargeted");
+        //     input.currentTarget = "";
+        // }
+        // if (input.currentTarget != target) {
+        //     input.currentTarget = target;
+        //     if (oldTarget != "") {
+        //         document.getElementById("target"+oldTarget).classList.toggle("notTargeted");  
+        //     }
+        // } else {
+        //     input.currentTarget = "";
+        // }
     }
 }
 
@@ -100,8 +119,12 @@ var command = {
         }
     },
     attack: function() {
-        console.log("attack");
-        command.log("ATTACK: destroyed enemy.")
+        if (input.currentTarget == "") {
+            command.log("ATTACK: failed, no target");
+        } else {
+            enemy.attackEnemy(input.currentTarget);
+        }
+        input.pressClear();
     },
 
     randomizeCommand: function(commandArray) {
@@ -122,7 +145,6 @@ var command = {
         }
     },
     log: function(text) {
-        let logElement = document.getElementById("command-log");
         let log1Element = document.getElementById("log1");
         let log2Element = document.getElementById("log2");
         let log3Element = document.getElementById("log3");
@@ -137,6 +159,45 @@ var command = {
     }
 
 }
+
+var enemy = {
+    basicEnemy: {
+        name: "Basic Enemy",
+        hp: 1,
+        startup: 1,
+        attack: 3
+    },
+    enemyArray: [],
+    
+    attackEnemy: function(target) {
+        let targetedEnemy = enemy.enemyArray[target-1];
+        if (targetedEnemy == "") {
+            command.log("ATTACK: failed, no enemy to attack")
+        } else {
+            targetedEnemy.hp -= 1;
+            if (targetedEnemy.hp <= 0) {
+                enemy.killEnemy(target);
+                command.log("ATTACK: success, killed enemy");
+            } else {
+                command.log("ATTACK: success, damaged enemy");
+            }
+        }
+    },
+
+    killEnemy: function(target) {
+        let enemyElement = document.getElementById("enemy"+target);
+        let enemyDivElement = document.getElementById("enemy"+target+"-div");
+        
+        currentTarget = "";
+        input.setTarget(target);
+
+        enemy.enemyArray[target-1] = "";
+
+        enemyElement.classList.toggle("enemy");
+        enemyDivElement.className = "";
+    }
+}
+enemy.enemyArray = [enemy.basicEnemy, enemy.basicEnemy, enemy.basicEnemy];
 
 function commandExists(commandArray) {
     let oldCommand = commandArray;
@@ -233,8 +294,23 @@ window.addEventListener("keyup", function(e){
 });
 
 document.getElementById("enemy1").addEventListener("click", function(){input.targetEnemy("1")});
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyQ') {
+        input.targetEnemy("1");
+    }
+});
 document.getElementById("enemy2").addEventListener("click", function(){input.targetEnemy("2")});
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyW') {
+        input.targetEnemy("2");
+    }
+});
 document.getElementById("enemy3").addEventListener("click", function(){input.targetEnemy("3")});
+window.addEventListener("keydown", function(e){
+    if (e.code == 'KeyE') {
+        input.targetEnemy("3");
+    }
+});
 
 
 function randomLetterExcept(letter) {
