@@ -89,23 +89,6 @@ var input = {
                 document.getElementById("target"+oldTarget).classList.toggle("notTargeted");
             }
         }
-
-        // if (input.currentTarget != "") {
-        //     oldTarget = input.currentTarget;
-        //     document.getElementById("target"+target).classList.toggle("notTargeted");
-        // }
-        // if (input.currentTarget == target) {
-        //     document.getElementById("target"+target).classList.toggle("notTargeted");
-        //     input.currentTarget = "";
-        // }
-        // if (input.currentTarget != target) {
-        //     input.currentTarget = target;
-        //     if (oldTarget != "") {
-        //         document.getElementById("target"+oldTarget).classList.toggle("notTargeted");  
-        //     }
-        // } else {
-        //     input.currentTarget = "";
-        // }
     }
 }
 
@@ -168,12 +151,12 @@ var command = {
 
 var enemy = {
     basicEnemy: {
-        name: "Basic Enemy",
+        name: "enemy-basic",
         hp: 1,
         startup: 1,
         attack: 3
     },
-    enemyArray: [],
+    enemyArray: ["", "", ""],
     
     attackEnemy: function(target) {
         let targetedEnemy = enemy.enemyArray[target-1];
@@ -189,7 +172,20 @@ var enemy = {
             }
         }
     },
+    spawnEnemy: (enemySlot, enemyType = { name: "enemy-basic", hp: 1, startup: 1, attack: 3 }) => {
+            let enemyElement = document.getElementById("enemy"+enemySlot);
+            let enemyDivElement = document.getElementById("enemy"+enemySlot+"-div");
 
+            console.log(enemySlot);
+            
+            enemy.enemyArray[enemySlot-1] = enemyType;
+            
+            console.log(enemy.enemyArray[enemySlot-1]);
+
+            enemyElement.classList.toggle("enemy");
+            enemyDivElement.className = enemyType.name;
+    },
+        
     killEnemy: function(target) {
         let enemyElement = document.getElementById("enemy"+target);
         let enemyDivElement = document.getElementById("enemy"+target+"-div");
@@ -201,8 +197,11 @@ var enemy = {
 
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";
+
+        setTimeout(function() {enemy.spawnEnemy(target)}, 1000);
     }
 }
+
 enemy.enemyArray = [enemy.basicEnemy, enemy.basicEnemy, enemy.basicEnemy];
 
 function commandExists(commandArray) {
