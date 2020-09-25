@@ -196,7 +196,7 @@ var enemy = {
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";
         // This hack puts an explosion gif and adds a random number to the end so it plays every time.
-        enemyDivElement.insertAdjacentHTML('beforebegin', '<img src=images/explosion.gif?a='+Math.random()+' id="explosion" style="position: absolute;">')
+        enemyDivElement.insertAdjacentHTML('beforebegin', '<img src=images/explosion.gif?a='+Math.random()+' id="explosion">')
         // Removes the explosion gif
         setTimeout(function() {document.getElementById("explosion").remove()}, 600);
 

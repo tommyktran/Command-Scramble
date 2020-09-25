@@ -136,7 +136,11 @@ img {
         opacity: 100%;
     }
 }
-
+#explosion {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
 .enemy-basic {
 	background: url('images/Sprite Sheets/SpaceshipMegapack_LightBlue.png') no-repeat -452px -398px;
 	width: 56px;
