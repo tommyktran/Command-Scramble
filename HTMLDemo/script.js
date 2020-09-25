@@ -51,6 +51,7 @@ var input = {
     pressClear: function() {
         input.currentInput = [];
         input.updateDisplay();
+        input.setTarget("");
     },
     updateDisplay: function() {
         displayElement.innerHTML = input.currentInput.join("");
@@ -69,7 +70,12 @@ var input = {
 
     setTarget: function(target) {
         let oldTarget = "";
-        if (input.currentTarget == "") {
+        if (target == "") {
+            if (input.currentTarget != "") {
+                document.getElementById("target"+input.currentTarget).classList.toggle("notTargeted");
+                input.currentTarget = target; 
+            }
+        } else if (input.currentTarget == "") {
             input.currentTarget = target;
             document.getElementById("target"+target).classList.toggle("notTargeted");
         } else if (input.currentTarget == target) {
