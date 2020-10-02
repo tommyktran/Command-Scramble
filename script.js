@@ -103,9 +103,11 @@ var game = {
         game.isRunning = true;
         game.resetGameVars();
         window.setTimeout(instance, 100);
-        // while (game.isRunning) {
-        //     game.process();
-        // }
+        document.getElementById("screen").style = "display:none;";
+        
+        setTimeout(function() {enemy.spawnEnemy(1)}, 500);
+        setTimeout(function() {enemy.spawnEnemy(2)}, 300);
+        setTimeout(function() {enemy.spawnEnemy(3)}, 600);
     },
     gameOver: function() {
         game.isRunning = false;
@@ -242,16 +244,19 @@ var enemy = {
         }
     },
     spawnEnemy: (enemySlot, enemyType = enemy.basicEnemy) => {
-            let enemyElement = document.getElementById("enemy"+enemySlot);
-            let enemyDivElement = document.getElementById("enemy"+enemySlot+"-div");
-            
-            enemy.enemyArray[enemySlot-1] = Object.assign({}, enemyType);
-            enemyDivElement.className = enemyType.name + " flyIn";
-            enemy.enemyArray[enemySlot-1].process();
+        let enemyElement = document.getElementById("enemy"+enemySlot);
+        let enemyDivElement = document.getElementById("enemy"+enemySlot+"-div");
+        
+        enemy.enemyArray[enemySlot-1] = Object.assign({}, enemyType);
+        enemyDivElement.className = enemyType.name + " flyIn";
+        
 
-            // Sets a timeout before the "enemy" class is enabled to prevent players
-            // from killing enemies as soon as they are spawned.
-            setTimeout(function() {enemyElement.classList.toggle("enemy")}, 800);
+        // Sets a timeout before the "enemy" class is enabled to prevent players
+        // from killing enemies as soon as they are spawned.
+        setTimeout(function() {
+            enemyElement.classList.toggle("enemy")
+            enemy.enemyArray[enemySlot-1].process();
+        }, 800);
     },
         
     killEnemy: function(target) {
@@ -276,9 +281,7 @@ var enemy = {
         setTimeout(function() {enemy.spawnEnemy(target)}, randomDelay);
     }
 }
-setTimeout(function() {enemy.spawnEnemy(1)}, 500);
-setTimeout(function() {enemy.spawnEnemy(2)}, 300);
-setTimeout(function() {enemy.spawnEnemy(3)}, 600);
+
 
 
 function commandExists(commandArray) {
@@ -394,6 +397,8 @@ window.addEventListener("keydown", function(e){
     }
 });
 
+document.getElementById("button").addEventListener("click", function(){game.start()});
+
 
 function randomLetterExcept(letter) {
     let letterArray = []
@@ -430,5 +435,3 @@ function arraysEqual(a, b) {
     }
     return true;
   }
-
-  game.start();
