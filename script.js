@@ -104,6 +104,7 @@ var game = {
         game.resetGameVars();
         window.setTimeout(instance, 100);
         document.getElementById("screen").style = "display:none;";
+        document.getElementById("instructions").style = "display:none;";
         
         setTimeout(function() {enemy.spawnEnemy(1)}, 500);
         setTimeout(function() {enemy.spawnEnemy(2)}, 300);
@@ -111,7 +112,8 @@ var game = {
     },
     gameOver: function() {
         game.isRunning = false;
-
+        document.getElementById("screen").style = "display:flex;";
+        document.getElementById("gameover").style = "display:block;";
     },
     resetGameVars: function() {
         game.playerShield = 100;
@@ -124,7 +126,8 @@ var game = {
     changePlayerShield: function(amount) {
         game.playerShield += amount;
         if (game.playerShield <= 0) {
-            isRunning = false;
+            game.playerShield = 0;
+            game.gameOver();
         }
         document.getElementById("player-shield").innerHTML = game.playerShield;
     }

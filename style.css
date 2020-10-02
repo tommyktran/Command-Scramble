@@ -106,14 +106,14 @@ img {
     align-items: center;
     flex-direction: column;
 }
-#screen div {
+#screen .inner-screen {
 
     width: 250px;
     text-align: center;
     padding: 20px;
     background-color: rgb(255,255,255,3%);
 }
-#screen #button {
+#screen #button, #gameover {
     font-size: 50px;
     padding: 20px;
     margin: 10px;
@@ -121,6 +121,10 @@ img {
     width: 250px;
     text-align: center;
     text-decoration: none;
+}
+#gameover {
+    font-size: 40px;
+    display: none;
 }
 .game-area {
     display: flex;
