@@ -108,6 +108,12 @@ img {
     left: 7px;
     font-size: 16px;
 }
+.player-shield {
+    position: absolute;
+    bottom: 0;
+    left: 7px;
+    font-size: 16px;
+}
 .enemy1, .enemy2, .enemy3 {
     display: flex;
     justify-content: center;

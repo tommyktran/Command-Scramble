@@ -103,7 +103,6 @@ var game = {
         game.isRunning = true;
         game.resetGameVars();
         window.setTimeout(instance, 100);
-        window.setTimeout(enemy.start(), 100);
         // while (game.isRunning) {
         //     game.process();
         // }
@@ -113,25 +112,19 @@ var game = {
 
     },
     resetGameVars: function() {
-        playerShield = 100;
-        playerAmmo = 10;
-        timeSurvived = 0.0;
+        game.playerShield = 100;
+        game.playerAmmo = 10;
+        game.timeSurvived = 0.0;
         time = 0;
         elapsed = '0.0';
         start = new Date().getTime()
     },
     changePlayerShield: function(amount) {
         game.playerShield += amount;
-        if (playerShield <= 0) {
+        if (game.playerShield <= 0) {
             isRunning = false;
         }
-    }
-}
-
-var enemy = {
-
-    start: function() {
-        
+        document.getElementById("player-shield").innerHTML = game.playerShield;
     }
 }
 
@@ -217,8 +210,20 @@ var enemy = {
     basicEnemy: {
         name: "enemy-basic",
         hp: 1,
-        startup: 1,
-        attack: 3
+        startup: 1000,
+        attackSpeed: 500,
+        attack: 3,
+        doAttack: function() {
+            if (this.hp > 0) {
+                game.changePlayerShield(this.attack * -1);
+                setTimeout(() => {this.doAttack()}, this.attackSpeed);
+                
+            } 
+        },
+        process: function() {
+            setTimeout(() => {this.doAttack()}, this.startup);
+        }   
+        
     },
     enemyArray: ["", "", ""],
     
@@ -236,12 +241,13 @@ var enemy = {
             }
         }
     },
-    spawnEnemy: (enemySlot, enemyType = { name: "enemy-basic", hp: 1, startup: 1, attack: 3 }) => {
+    spawnEnemy: (enemySlot, enemyType = enemy.basicEnemy) => {
             let enemyElement = document.getElementById("enemy"+enemySlot);
             let enemyDivElement = document.getElementById("enemy"+enemySlot+"-div");
             
-            enemy.enemyArray[enemySlot-1] = enemyType;
+            enemy.enemyArray[enemySlot-1] = Object.assign({}, enemyType);
             enemyDivElement.className = enemyType.name + " flyIn";
+            enemy.enemyArray[enemySlot-1].process();
 
             // Sets a timeout before the "enemy" class is enabled to prevent players
             // from killing enemies as soon as they are spawned.
@@ -270,8 +276,10 @@ var enemy = {
         setTimeout(function() {enemy.spawnEnemy(target)}, randomDelay);
     }
 }
+setTimeout(function() {enemy.spawnEnemy(1)}, 500);
+setTimeout(function() {enemy.spawnEnemy(2)}, 300);
+setTimeout(function() {enemy.spawnEnemy(3)}, 600);
 
-enemy.enemyArray = [enemy.basicEnemy, enemy.basicEnemy, enemy.basicEnemy];
 
 function commandExists(commandArray) {
     let oldCommand = commandArray;
