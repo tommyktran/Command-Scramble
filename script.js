@@ -210,9 +210,9 @@ var enemy = {
     basicEnemy: {
         name: "enemy-basic",
         hp: 1,
-        startup: 1000,
-        attackSpeed: 500,
-        attack: 3,
+        startup: 1500,
+        attackSpeed: 200,
+        attack: 1,
         doAttack: function() {
             if (this.hp > 0) {
                 game.changePlayerShield(this.attack * -1);
