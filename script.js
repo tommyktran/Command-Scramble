@@ -102,6 +102,7 @@ var game = {
     start: function() {
         game.isRunning = true;
         game.resetGameVars();
+        document.getElementById("player-shield").innerHTML = game.playerShield;
         window.setTimeout(instance, 100);
         document.getElementById("screen").style = "display:none;";
         document.getElementById("instructions").style = "display:none;";
@@ -210,7 +211,7 @@ var command = {
     }
 
 }
-
+var enemyTimeouts = []
 var enemy = {
     basicEnemy: {
         name: "enemy-basic",
@@ -219,11 +220,14 @@ var enemy = {
         attackSpeed: 200,
         attack: 1,
         doAttack: function() {
-            if (this.hp > 0) {
+            console.log(this.hp);
+            if (this.hp > 0 && game.isRunning) {
+                console.log(this.hp);
                 game.changePlayerShield(this.attack * -1);
                 setTimeout(() => {this.doAttack()}, this.attackSpeed);
-                
-            } 
+            } else {
+                return;
+            }
         },
         process: function() {
             setTimeout(() => {this.doAttack()}, this.startup);
@@ -238,6 +242,7 @@ var enemy = {
             command.log("ATTACK: failed, no enemy to attack")
         } else {
             targetedEnemy.hp -= 1;
+            console.log(targetedEnemy.hp);
             if (targetedEnemy.hp <= 0) {
                 enemy.killEnemy(target);
                 command.log("ATTACK: success, killed enemy");

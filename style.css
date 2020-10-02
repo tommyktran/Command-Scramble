@@ -96,7 +96,7 @@ img {
 }
 
 #screen {
-    background-color: rgb(0,0,0,60%);
+    background-color: rgb(0,0,0,90%);
     position: absolute;
     width: 100%;
     height: 100%;
@@ -115,12 +115,18 @@ img {
 }
 #screen #button, #gameover {
     font-size: 50px;
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
     color: white;
     width: 250px;
     text-align: center;
     text-decoration: none;
+
+    
+}
+#button {
+    background-color: rgb(255,255,255,3%);
+    border: 1px solid white;
 }
 #gameover {
     font-size: 40px;
