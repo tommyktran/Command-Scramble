@@ -103,6 +103,8 @@ var game = {
         game.isRunning = true;
         game.resetGameVars();
         document.getElementById("player-shield").innerHTML = game.playerShield;
+        document.getElementById("player-ammo").innerHTML = game.playerAmmo;
+
         window.setTimeout(instance, 100);
         document.getElementById("screen").style = "display:none;";
         document.getElementById("instructions").style = "display:none;";
@@ -157,17 +159,29 @@ function instance()
 
 var command = {
     attackCommand: ["A", "B", "C"],
+    reloadCommand: ["D", "A"],
     commandList: [],
     processInput: function(inputArray) {
         for (x in command.commandList) {
             if (arraysEqual(command.commandList[x], inputArray)) {
-                // Make if statements for all the commands here.
-                if (command.commandList[x] == command.attackCommand) {
-                    command.attack();
-                } 
-            } else {
-                    command.logInvalid();
+                switch (command.commandList[x]) {
+                    case command.attackCommand:
+                        command.attack();
+                        break;
+                    case command.reloadCommand:
+                        command.reload();
+                        break;
                 }
+            }
+            
+            // if (arraysEqual(command.commandList[x], inputArray)) {
+            //     // Make if statements for all the commands here.
+            //     if (command.commandList[x] == command.attackCommand) {
+            //         command.attack();
+            //     } else if (command.commandList[x] == command.reloadCommand) {
+            //         command.reload();
+            //     }
+            // }
         }
     },
     attack: function() {
@@ -316,7 +330,7 @@ function commandExists(commandArray) {
 }
 
 // We define commandList outside the command object because it won't work otherwise.
-command.commandList = [command.attackCommand];
+command.commandList = [command.attackCommand, command.reloadCommand];
 
 document.getElementById("a-button").addEventListener("click", function(){input.pressButton("A")});
 window.addEventListener("keydown", function(e){
