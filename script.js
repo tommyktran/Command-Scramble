@@ -9,6 +9,8 @@ enemy1Element = document.getElementById("enemy1");
 enemy2Element = document.getElementById("enemy2");
 enemy3Element = document.getElementById("enemy3");
 
+let root = document.documentElement;
+
 var input = {
     currentTarget: "",
     currentInput: [],
@@ -273,12 +275,14 @@ var enemy = {
         enemy.enemyArray[enemySlot-1] = Object.assign({}, enemyType);
         enemyDivElement.className = enemyType.name + " flyIn";
         
+        root.style.setProperty('--startup' + enemySlot, enemyType.startup/1000 + "s");
 
         // Sets a timeout before the "enemy" class is enabled to prevent players
         // from killing enemies as soon as they are spawned.
         setTimeout(function() {
             enemyElement.classList.toggle("enemy")
             enemy.enemyArray[enemySlot-1].process();
+            enemyElement.classList.toggle("startup"+enemySlot);
         }, 800);
     },
         
@@ -290,6 +294,7 @@ var enemy = {
         input.setTarget(target);
 
         enemy.enemyArray[target-1] = "";
+        enemyElement.classList.toggle("startup"+target);
 
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";

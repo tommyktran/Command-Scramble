@@ -83,7 +83,6 @@ img {
     background-color: rgb(0,0,0,40%);
     margin: 0 auto;
     padding: 5px;
-
 }
 .main-buttons-container {
     display: flex;
@@ -199,6 +198,41 @@ img {
     }
     100% {
         opacity: 100%;
+    }
+}
+:root {
+    --startup1: 1s;
+    --startup2: 1s;
+    --startup3: 1s;
+
+}
+.startup1:after {
+    animation: startup var(--startup1) ease-out forwards;
+}
+.startup2:after {
+    animation: startup var(--startup2) ease-out forwards;
+}
+.startup3:after {
+    animation: startup var(--startup3) ease-out forwards;
+}
+.startup1:after, .startup2:after, .startup3:after {
+    filter: opacity(50%);
+    background-color: yellow;
+    border-radius: 50%;
+    position: absolute;
+}
+@keyframes startup {
+    0% {
+        display: block;
+        width: 1px;
+        height: 1px;
+    }
+    99% {
+        width: 30px;
+        height: 30px;
+    }
+    100% {
+        display: none;
     }
 }
 #explosion {
