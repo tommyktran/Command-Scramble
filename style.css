@@ -25,7 +25,7 @@ header {
     padding: 0 15px;
     background-color: rgb(0,0,0,60%);
 
-    box-shadow: 0 6px 13px 1px rgb(0,0,0,50%);
+    box-shadow: 0 25px 13px -13px rgb(0,0,0,50%);
     z-index: 1000;
 }
 .website-title {
