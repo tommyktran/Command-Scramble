@@ -121,6 +121,18 @@ var game = {
         document.getElementById("gameover").style = "display:block;";
         document.getElementById("gameover-survived-amt").innerHTML = game.timeSurvived;
         document.getElementById("gameover-survived").style = "display:block;";
+
+        let enemyElement;
+        let enemyDivElement;
+        
+        for (let x of [1,2,3]) {
+            enemyElement = document.getElementById("enemy"+x);
+            enemyDivElement = document.getElementById("enemy"+x+"-div");
+            enemy.enemyArray[x] = "";
+            enemyElement.classList.toggle("enemy");
+            enemyDivElement.className = "";
+            enemyElement.classList.toggle("startup"+x);
+        }
     },
     resetGameVars: function() {
         game.playerShield = 100;
@@ -131,7 +143,7 @@ var game = {
         start = new Date().getTime()
     },
     changePlayerShield: function(amount) {
-        game.playerShield += amount;
+        game.playerShield = Math.floor(game.playerShield + amount);
         if (game.playerShield <= 0) {
             game.playerShield = 0;
             game.gameOver();

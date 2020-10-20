@@ -217,7 +217,7 @@ img {
 }
 .startup1:after, .startup2:after, .startup3:after {
     filter: opacity(50%);
-    background-color: yellow;
+    background-color: red;
     border-radius: 50%;
     position: absolute;
 }
