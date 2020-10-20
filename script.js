@@ -173,10 +173,20 @@ var command = {
     attack: function() {
         if (input.currentTarget == "") {
             command.log("ATTACK: failed, no target");
+        } else if (game.playerAmmo <= 0) {
+            command.log("ATTACK: failed, no ammo");
+
         } else {
+            game.playerAmmo--;
+            document.getElementById("player-ammo").innerHTML = game.playerAmmo;
             enemy.attackEnemy(input.currentTarget);
         }
         input.pressClear();
+    },
+    reload: function() {
+        command.log("RELOAD: success");
+        game.playerAmmo = 10;
+        document.getElementById("player-ammo").innerHTML = game.playerAmmo;
     },
 
     randomizeCommand: function(commandArray) {

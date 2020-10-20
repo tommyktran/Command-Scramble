@@ -153,6 +153,17 @@ img {
     left: 7px;
     font-size: 16px;
 }
+.player-ammo {
+    position: absolute;
+    bottom: 0;
+    right: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#player-ammo {
+    margin-left: 10px;
+}
 .enemy1, .enemy2, .enemy3 {
     display: flex;
     justify-content: center;
