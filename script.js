@@ -15,18 +15,20 @@ var input = {
     currentTarget: "",
     currentInput: [],
     pressButton: function(button) {
-        if (button == "A") {
-            this.pressA();
-        } else if (button == "B") {
-            this.pressB();
-        } else if (button == "C") {
-            this.pressC();
-        } else if (button == "D") {
-            this.pressD();
-        } else if (button == "Enter") {
-            this.pressEnter();
-        } else if (button == "Clear") {
-            this.pressClear();
+        if (game.isRunning) {
+            if (button == "A") {
+                this.pressA();
+            } else if (button == "B") {
+                this.pressB();
+            } else if (button == "C") {
+                this.pressC();
+            } else if (button == "D") {
+                this.pressD();
+            } else if (button == "Enter") {
+                this.pressEnter();
+            } else if (button == "Clear") {
+                this.pressClear();
+            }
         }
     },
     pressA: function() {
@@ -200,7 +202,7 @@ var command = {
         } else {
             game.playerAmmo--;
             if (game.playerAmmo === 0) {
-                document.getElementById("player-ammo").style = "color: red;";
+                document.getElementById("player-ammo").style = "color: #eb4034;";
             }
             document.getElementById("player-ammo").innerHTML = game.playerAmmo;
             enemy.attackEnemy(input.currentTarget);
@@ -257,13 +259,13 @@ var enemy = {
         doAttack: function() {
             if (this.hp > 0 && game.isRunning) {
                 game.changePlayerShield(this.attack * -1);
-                setTimeout(() => {this.doAttack()}, this.attackSpeed);
+                enemyTimeouts[enemy.enemyArray.indexOf(this)] = setTimeout(() => {this.doAttack()}, this.attackSpeed);
             } else {
                 return;
             }
         },
         process: function() {
-            setTimeout(() => {this.doAttack()}, this.startup);
+            enemyTimeouts[enemy.enemyArray.indexOf(this)] = setTimeout(() => {this.doAttack()}, this.startup);
         }   
         
     },
@@ -275,7 +277,6 @@ var enemy = {
             command.log("ATTACK: failed, no enemy to attack")
         } else {
             targetedEnemy.hp -= 1;
-            console.log(targetedEnemy.hp);
             if (targetedEnemy.hp <= 0) {
                 enemy.killEnemy(target);
                 command.log("ATTACK: success, killed enemy");
@@ -311,6 +312,8 @@ var enemy = {
 
         enemy.enemyArray[target-1] = "";
         enemyElement.classList.toggle("startup"+target);
+
+        clearTimeout(enemyTimeouts[target-1]);
 
         enemyElement.classList.toggle("enemy");
         enemyDivElement.className = "";
@@ -361,7 +364,7 @@ document.getElementById("b-button").addEventListener("click", function(){input.p
 window.addEventListener("keydown", function(e){
     if (e.code == 'KeyS') {
         document.getElementById("b-button").style.content='url("images/green-B-pushed.png")';
-        input.pressB();
+        input.pressButton("B");
     }
 });
 window.addEventListener("keyup", function(e){
