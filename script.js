@@ -199,6 +199,9 @@ var command = {
 
         } else {
             game.playerAmmo--;
+            if (game.playerAmmo === 0) {
+                document.getElementById("player-ammo").style = "color: red;";
+            }
             document.getElementById("player-ammo").innerHTML = game.playerAmmo;
             enemy.attackEnemy(input.currentTarget);
         }
@@ -208,6 +211,7 @@ var command = {
         command.log("RELOAD: success");
         game.playerAmmo = 10;
         document.getElementById("player-ammo").innerHTML = game.playerAmmo;
+        document.getElementById("player-ammo").style = "color: white;";
     },
 
     randomizeCommand: function(commandArray) {
