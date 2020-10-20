@@ -117,6 +117,8 @@ var game = {
         game.isRunning = false;
         document.getElementById("screen").style = "display:flex;";
         document.getElementById("gameover").style = "display:block;";
+        document.getElementById("gameover-survived-amt").innerHTML = game.timeSurvived;
+        document.getElementById("gameover-survived").style = "display:block;";
     },
     resetGameVars: function() {
         game.playerShield = 100;
@@ -173,15 +175,6 @@ var command = {
                         break;
                 }
             }
-            
-            // if (arraysEqual(command.commandList[x], inputArray)) {
-            //     // Make if statements for all the commands here.
-            //     if (command.commandList[x] == command.attackCommand) {
-            //         command.attack();
-            //     } else if (command.commandList[x] == command.reloadCommand) {
-            //         command.reload();
-            //     }
-            // }
         }
     },
     attack: function() {
@@ -244,9 +237,7 @@ var enemy = {
         attackSpeed: 200,
         attack: 1,
         doAttack: function() {
-            console.log(this.hp);
             if (this.hp > 0 && game.isRunning) {
-                console.log(this.hp);
                 game.changePlayerShield(this.attack * -1);
                 setTimeout(() => {this.doAttack()}, this.attackSpeed);
             } else {

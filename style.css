@@ -164,6 +164,10 @@ img {
 #player-ammo {
     margin-left: 10px;
 }
+#gameover-survived {
+    display:none;
+    font-size: 20px;
+}
 .enemy1, .enemy2, .enemy3 {
     display: flex;
     justify-content: center;
