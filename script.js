@@ -143,6 +143,9 @@ var game = {
         time = 0;
         elapsed = '0.0';
         start = new Date().getTime()
+        for (let x in enemyTimeouts) {
+            clearTimeout(enemyTimeouts[x]);
+        }
     },
     changePlayerShield: function(amount) {
         game.playerShield = Math.floor(game.playerShield + amount);

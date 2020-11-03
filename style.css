@@ -16,12 +16,32 @@ body {
     font-family: november;
     color: white;
     letter-spacing: .11em;
+    background-color: #020008;
+}
+.desktop-header {
+    display: none;
+    flex-direction: column;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+.desktop-header li {
+    margin-top: -30px;
+    font-size: 20px;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+nav li {
+    list-style-type: none;
 }
 header {
     display: flex;
     flex-grow: 0;
     align-items: center;
     justify-content: space-between;
+}
+.mobile-header {
     padding: 0 15px;
     background-color: rgb(0,0,0,60%);
 
@@ -35,6 +55,14 @@ header {
 img {
     user-select: none;
 }
+.content {
+    display: none;
+    margin: 20px;
+    flex-direction: column;
+}
+.content-title {
+    text-align: center;
+}
 
 .wrapper {
     background-image: url("images/back.png");
@@ -43,6 +71,7 @@ img {
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 0 auto;
 }
 
 .log-input-container {
@@ -329,5 +358,41 @@ BUTTON IMAGES
     }
     .wrapper {
         width: 490px;
+    }
+}
+
+@media (min-width: 490px) {
+    .main-buttons-container {
+        margin-left: 20px;
+    }
+    .other-buttons-container {
+        margin-right: 20px;
+    }
+    .wrapper {
+        width: 490px;
+    }
+}
+
+@media (min-width: 600px) {
+    .mobile-header {
+        display: none;
+    }
+    .desktop-header {
+        display: flex;
+    }
+    .content {
+        display: flex;
+    }
+}
+
+@media (min-width: 1100px) {
+    .content {
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .content-column {
+        width: 45%;
     }
 }
