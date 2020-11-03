@@ -16,7 +16,8 @@ body {
     font-family: november;
     color: white;
     letter-spacing: .11em;
-    background-color: #020008;
+    background-color: #221925;
+    background-image: url(images/back.png);
 }
 .desktop-header {
     display: none;
@@ -80,6 +81,7 @@ img {
     flex-direction: column;
     position: relative;
     margin: 0 auto;
+    box-shadow: 0 0 8px black;
 }
 
 .log-input-container {
