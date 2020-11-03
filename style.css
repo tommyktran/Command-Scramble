@@ -28,6 +28,13 @@ body {
     margin-top: -30px;
     font-size: 20px;
 }
+.desktop-header li:not(last-child) {
+    margin-right: 30px;
+}
+.desktop-header nav {
+    display: flex;
+    flex-direction: row;
+}
 a {
     color: white;
     text-decoration: none;
