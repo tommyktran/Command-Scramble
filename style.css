@@ -64,7 +64,8 @@ img {
 }
 .content {
     display: none;
-    margin: 20px;
+    margin: 20px auto;
+    width: 90%;
     flex-direction: column;
 }
 .content-title {
