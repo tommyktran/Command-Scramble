@@ -293,6 +293,16 @@ img {
     position: absolute;
     margin-top: 50px;
 }
+
+.content-enemy {
+    margin: 0 auto;
+}
+.content-enemy:after {
+    content: none;
+}
+.content-column p {
+    margin: 5px 0;
+}
 /* ---------------
 BUTTON IMAGES
 ---------------- */
