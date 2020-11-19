@@ -367,6 +367,13 @@ BUTTON IMAGES
     .main-buttons-container {
         width: 200px;
     }
+    .mobile-header {
+        height: 50px;
+        font-size: 14px;
+    }
+    .game-area div {
+        padding-bottom: 30px;
+    }
 }
 
 @media (min-width: 490px) {
@@ -408,11 +415,11 @@ BUTTON IMAGES
     }
     .content-column {
         margin: 0 auto 50px auto;
-        width: 40%;
+        width: 80%;
     }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 590px) {
     .content {
         flex-direction: row;
         justify-content: space-around;
