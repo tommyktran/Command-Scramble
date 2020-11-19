@@ -1,6 +1,10 @@
-##About
+# Command Scramble
+
+## About
 
 **Command Scramble** is a game where your objective is to kill the enemy ships that pop up on the screen and survive for as long as possible. With the 4 big buttons at the bottom of the game screen, use the attack command (with the letters ABC) and the reload command (with the letter CA) and target the enemies (by clicking or using the keyboard keys Q/W/E) to kill them. 
+
+If your shield drops to zero, you lose the game!
 
 This game can be played with or without the keyboard. Controls are as follows:
 
@@ -9,7 +13,7 @@ This game can be played with or without the keyboard. Controls are as follows:
 * Enter or click the gray arrow button : enter the command
 * Backspace or click the gray circle button: clear the command
 
-##Features
+## Features
 
 CSS
 * A navigation menu that expands and collapses properly at desktop and mobile sizes, such as by switching between vertical and horizontal, or is opened by clicking the “hamburger” menu item
