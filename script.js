@@ -448,6 +448,14 @@ window.addEventListener("keydown", function(e){
 });
 
 document.getElementById("button").addEventListener("click", function(){game.start()});
+document.getElementById("hamburger").addEventListener("click", function(){
+    var x = document.getElementById("mobile-nav");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+});
 
 
 function randomLetterExcept(letter) {

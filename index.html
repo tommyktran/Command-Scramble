@@ -21,7 +21,11 @@
     <div class="wrapper">
         <header class="mobile-header">
             <h1 class="website-title">Command Scramble</h1>
-            <img class="hamburger" src="images/icons8-menu-24.png" width="24px" height="24px">
+            <img id="hamburger" src="images/icons8-menu-24.png" width="24px" height="24px">
+            <nav id="mobile-nav" style="display:none;">
+                <a href="about.html"><li>About</li></a>
+                <a href="https://github.com/tommyktran/Command-Scramble"><li>Github</li></a>
+            </nav>
         </header>
             <div id="screen">
                 <p id="gameover">GAME OVER</p>
@@ -30,6 +34,7 @@
                     <div class="inner-screen">
                         <p>Target enemies: click</p>
                         <p>Attack command: ABC</p>
+                        <p>Reload command: CA</p>
                     </div>
                     <div class="inner-screen">
                         <p>Keyboard controls</p>
@@ -81,7 +86,7 @@
         </div>
     </div>
     <div class="content">
-        <div class="content-column">
+        <div class="main-column">
             <h2 class="content-title">Enemy Stats</h2>
             <div class="enemy-basic content-enemy"></div>
             <p>Basic Enemy</p>
@@ -91,7 +96,7 @@
             <p>Attack Power: 1%</p>
             <p>Abilities: None</p>
         </div>
-        <div class="content-column">
+        <div class="main-column">
             <h2 class="content-title">Commands</h2>
             <p>Attack (ABC): uses 1 ammo and deals 1 damage to a target enemy.</p>
             <p>Reload (CA): reloads your ammo count.</p>
