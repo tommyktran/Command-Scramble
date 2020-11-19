@@ -2,7 +2,7 @@
 
 ## About
 
-**Command Scramble** is a game where your objective is to kill the enemy ships that pop up on the screen and survive for as long as possible. With the 4 big buttons at the bottom of the game screen, use the attack command (with the letters ABC) and the reload command (with the letter CA) and target the enemies (by clicking or using the keyboard keys Q/W/E) to kill them. 
+**Command Scramble** is a game where your objective is to kill the enemy ships that pop up on the screen and survive for as long as possible. With the 4 big buttons at the bottom of the game screen, use the attack command (with the input "ABC") and the reload command (with the input "CA") and target the enemies (by clicking or using the keyboard keys Q/W/E) to kill them. 
 
 If your shield drops to zero, you lose the game!
 
