@@ -97,6 +97,11 @@ img {
 }
 .about-content {
     padding: 0 20px;
+    width: 100%;
+}
+.about-content .content-column {
+    max-width: 1000px;
+    margin: 0 auto; 
 }
 
 .wrapper {
